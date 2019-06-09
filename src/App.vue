@@ -1,6 +1,8 @@
 <template>
-  <div id="app">
-    1
+  <div class="training">
+    <h1>Math training</h1>
+    <hr>
+    <app-start-screen></app-start-screen>
   </div>
 </template>
 
@@ -15,6 +17,9 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+  .training {
+    max-width: 700px;
+    margin: 20px auto;
+  }
 </style>
