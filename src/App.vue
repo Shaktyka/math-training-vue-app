@@ -27,6 +27,7 @@
         v-else-if="state == 'result'"
         :stats="stats"
         @repeat="onStart"
+        @nextLevel="onNextLevel"
       />
       <div v-else>Unknown state</div>
       </transition>
@@ -106,6 +107,10 @@ export default {
       } else {
         this.state = 'result';
       }
+    },
+    onNextLevel() {
+      this.level++;
+      this.onStart();
     }
   }
 };
