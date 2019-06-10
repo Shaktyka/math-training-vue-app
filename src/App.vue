@@ -56,7 +56,7 @@ export default {
           from: 10,
           to: 40,
           range: 5,
-          variants: 2
+          variants: 3
         },
         {
           from: 20,
@@ -68,7 +68,7 @@ export default {
           from: 30,
           to: 70,
           range: 25,
-          variants: 6
+          variants: 5
         }
       ]
     }
