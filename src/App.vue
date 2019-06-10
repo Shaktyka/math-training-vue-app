@@ -2,6 +2,9 @@
   <div class="training">
     <h1>Math training</h1>
     <hr>
+    <div class="progress">
+      <div class="progress-bar" :style="progressStyles"></div>
+    </div>
     <div class="box">
       <transition name="flip" mode="out-in">
       <app-start-screen
@@ -40,12 +43,17 @@ export default {
         type: '',
         text: ''
       },
-      questionMax: 3
+      questionMax: 5
     }
   },
   computed: {
     questDone() {
-      return this.stats.success + this.stats.error;
+      return this.stats.success + this.stats.errors;
+    },
+    progressStyles() {
+      return {
+        width: (this.questDone / this.questionMax * 100) + '%'
+      }
     }
   },
   methods: {
@@ -56,11 +64,13 @@ export default {
       this.state = 'message';
       this.message.text = 'Good Job!';
       this.message.type = 'success';
+      this.stats.success++;
     },
     onQuestionError(msg) {
       this.state = 'message';
       this.message.text = msg;
       this.message.type = 'warning';
+      this.stats.errors++;
     },
     onNext() {
       this.state = 'question';
@@ -73,6 +83,14 @@ export default {
   .training {
     max-width: 700px;
     margin: 20px auto;
+  }
+
+  .progress-bar {
+    transition: width 0.5s;
+  }
+
+  .box {
+    margin: 10px 0;
   }
 
   .flip-enter {
