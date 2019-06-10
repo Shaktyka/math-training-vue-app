@@ -1,6 +1,6 @@
 <template>
   <div class="training">
-    <h1>Math training</h1>
+    <h1>Math training. Level {{ level + 1 }}</h1>
     <hr>
     <div class="progress">
       <div class="progress-bar" :style="progressStyles"></div>
@@ -15,6 +15,7 @@
         v-else-if="state == 'question'"
         @success="onQuestionSuccess"
         @error="onQuestionError"
+        :settings="levels[level]"
         />
       <app-message
         v-else-if="state == 'message'"
@@ -47,7 +48,28 @@ export default {
         type: '',
         text: ''
       },
-      questionMax: 5
+      questionMax: 5,
+      level: 0,
+      levels: [
+        {
+          from: 10,
+          to: 40,
+          range: 5,
+          variants: 2
+        },
+        {
+          from: 20,
+          to: 60,
+          range: 15,
+          variants: 4
+        },
+        {
+          from: 30,
+          to: 70,
+          range: 25,
+          variants: 6
+        }
+      ]
     }
   },
   computed: {

@@ -16,10 +16,13 @@
 
 <script>
 export default {
+  props: [
+    'settings'
+  ],
   data() {
     return {
-      x: mtRand(10, 100),
-      y: mtRand(10, 100)
+      x: mtRand(this.settings.from, this.settings.to),
+      y: mtRand(this.settings.from, this.settings.to)
     }
   },
   computed: {
@@ -28,8 +31,8 @@ export default {
     },
     answers() {
       let res = [this.good];
-      while (res.length < 4) {
-        let num = mtRand(this.good - 5, this.good + 10);
+      while (res.length < this.settings.variants) {
+        let num = mtRand(this.good - this.settings.range, this.good + this.settings.range);
         if (res.indexOf(num) === -1) {
           res.push(num);
         }
