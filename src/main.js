@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 
-// Глобальная регистрация компонентов
+// Глобальная регистрация компонентов. Компонент можно будет исп-ть где угодно
 
 import AppStartScreen from './components/StartScreen.vue';
 import AppQuestion from './components/Question.vue';
